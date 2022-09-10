@@ -52,7 +52,7 @@ def login():
             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=600)
         },
         app.config['SECRET_KEY'])
-        return jsonify({'token': token})
+        return jsonify({'token': token.decode("utf-8")})
     else:
         return make_response("Unable to verify", 403, {"WWW-Authenticate": "Basic realms : 'login bruh idk'"})
 
